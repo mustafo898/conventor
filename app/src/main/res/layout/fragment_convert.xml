@@ -9,9 +9,9 @@
     <androidx.appcompat.widget.LinearLayoutCompat
         android:id="@+id/action_bar"
         android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:background="@color/blue"
         android:orientation="horizontal"
-        android:layout_height="wrap_content"
         app:layout_constraintBottom_toTopOf="@id/liner1"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -23,12 +23,13 @@
             android:layout_height="wrap_content"
             android:text="My Office"
             android:textSize="32sp" />
+
         <ImageView
             android:id="@+id/top_menu"
-            android:rotation="90"
-            android:src="@drawable/menu_icon"
             android:layout_width="wrap_content"
-            android:layout_height="wrap_content"/>
+            android:layout_height="wrap_content"
+            android:rotation="90"
+            android:src="@drawable/menu_icon" />
     </androidx.appcompat.widget.LinearLayoutCompat>
 
     <androidx.appcompat.widget.LinearLayoutCompat
