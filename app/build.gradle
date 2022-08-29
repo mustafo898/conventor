@@ -69,4 +69,6 @@ dependencies {
     ///////////////////Navigation Component//////////////
     implementation "androidx.navigation:navigation-fragment-ktx:2.5.1"
     implementation "androidx.navigation:navigation-ui-ktx:2.5.1"
+    // bottom navigation - tab bar
+    implementation 'nl.joery.animatedbottombar:library:1.1.0'
 }

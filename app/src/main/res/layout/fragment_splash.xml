@@ -2,13 +2,17 @@
 <FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
+    android:background="@color/black"
     android:layout_height="match_parent"
-    tools:context=".presentation.second.SecondFragment">
+    tools:context=".presentation.fragment.splash.SplashFragment">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:text="Second Fragment"
+        android:text="Splash Fragment"
+        android:textStyle="italic"
+        android:textColor="@color/white"
+        android:textSize="64sp"
         android:gravity="center"/>
 
 </FrameLayout>

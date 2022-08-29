@@ -1,10 +1,11 @@
-package dark.composer.conventor
+package dark.composer.conventor.presentation.activity
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import dagger.hilt.android.AndroidEntryPoint
+import dark.composer.conventor.R
 import dark.composer.conventor.databinding.ActivityMainBinding
 
 @AndroidEntryPoint
@@ -19,4 +20,5 @@ class MainActivity : AppCompatActivity() {
         controller = findNavController(R.id.main_nav_fragment)
 
     }
+
 }

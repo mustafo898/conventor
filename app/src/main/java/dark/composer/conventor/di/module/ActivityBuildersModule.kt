@@ -2,7 +2,7 @@
 //
 //import dagger.Module
 //import dagger.android.ContributesAndroidInjector
-//import dark.composer.conventor.MainActivity
+//import dark.composer.conventor.presentation.activity.MainActivity
 //
 //@Module
 //abstract class ActivityBuildersModule {

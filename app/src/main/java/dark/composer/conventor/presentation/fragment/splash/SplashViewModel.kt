@@ -1,10 +1,9 @@
-package dark.composer.conventor.presentation.second
+package dark.composer.conventor.presentation.fragment.splash
 
 import androidx.lifecycle.ViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import javax.inject.Inject
 
 @HiltViewModel
-class SecondViewModel @Inject constructor() : ViewModel() {
-
+class SplashViewModel @Inject constructor()  : ViewModel() {
 }

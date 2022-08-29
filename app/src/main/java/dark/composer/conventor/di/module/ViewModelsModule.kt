@@ -5,8 +5,8 @@
 //import dagger.Module
 //import dagger.multibindings.IntoMap
 //import dark.composer.conventor.di.scopes.ViewModelKey
-//import dark.composer.conventor.presentation.main.MainViewModel
-//import dark.composer.conventor.presentation.second.SecondViewModel
+//import dark.composer.conventor.presentation.fragment.main.MainViewModel
+//import dark.composer.conventor.presentation.fragment.second.SecondViewModel
 //
 //@Module
 //abstract class ViewModelsModule {

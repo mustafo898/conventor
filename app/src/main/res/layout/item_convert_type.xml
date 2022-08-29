@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <androidx.cardview.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:cardElevation="3dp"
+        app:cardCornerRadius="20dp"
+        app:cardBackgroundColor="@color/white"
+        app:cardUseCompatPadding="true"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_margin="10dp"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                android:id="@+id/pdf"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/pdf_icon"
+                app:layout_constraintEnd_toStartOf="@id/rotate"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="@+id/word" />
+            <ImageView
+                android:id="@+id/rotate"
+                android:src="@drawable/ic_rotate"
+                app:layout_constraintTop_toTopOf="@id/pdf"
+                app:layout_constraintBottom_toBottomOf="@id/word"
+                app:layout_constraintStart_toEndOf="@id/pdf"
+                app:layout_constraintEnd_toStartOf="@id/word"
+                android:layout_width="40dp"
+                android:layout_height="40dp"/>
+
+            <ImageView
+                android:id="@+id/word"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:src="@drawable/word_icon"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/rotate" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

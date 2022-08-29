@@ -2,8 +2,8 @@
 //
 //import dagger.Module
 //import dagger.android.ContributesAndroidInjector
-//import dark.composer.conventor.presentation.main.MainFragment
-//import dark.composer.conventor.presentation.second.SecondFragment
+//import dark.composer.conventor.presentation.fragment.main.MainFragment
+//import dark.composer.conventor.presentation.fragment.second.SecondFragment
 //
 //@Module
 //abstract class MainFragmentBuildersModule {
