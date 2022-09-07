@@ -1,4 +1,4 @@
-//package dark.composer.conventor.di.module
+//package dark.composer.conventor.data.di.module
 //
 //import dagger.Module
 //import dagger.android.ContributesAndroidInjector

@@ -1,9 +1,7 @@
 package dark.composer.conventor.presentation.fragment.splash
 
 import android.os.CountDownTimer
-import android.view.View
 import androidx.fragment.app.viewModels
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 import dark.composer.conventor.R
 import dark.composer.conventor.databinding.FragmentSplashBinding
@@ -17,8 +15,8 @@ class SplashFragment : BaseFragment<FragmentSplashBinding>(FragmentSplashBinding
         object : CountDownTimer(3000, 100) {
             override fun onFinish() {
                 navController.navigate(R.id.action_splashFragment_to_convertFragment)
-                activity?.findViewById<BottomNavigationView>(R.id.bottomNavigation)?.visibility =
-                    View.VISIBLE
+//                activity?.findViewById<BottomNavigationView>(R.id.bottomNavigation)?.visibility =
+//                    View.VISIBLE
 
             }
 

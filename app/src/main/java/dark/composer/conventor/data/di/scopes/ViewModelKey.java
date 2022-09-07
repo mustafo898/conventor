@@ -1,4 +1,4 @@
-//package dark.composer.conventor.di.scopes;
+//package dark.composer.conventor.data.di.scopes;
 //
 //import androidx.lifecycle.ViewModel;
 //

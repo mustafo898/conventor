@@ -1,10 +1,10 @@
-//package dark.composer.conventor.di.module
+//package dark.composer.conventor.data.di.module
 //
 //import androidx.lifecycle.ViewModel
 //import dagger.Binds
 //import dagger.Module
 //import dagger.multibindings.IntoMap
-//import dark.composer.conventor.di.scopes.ViewModelKey
+//import dark.composer.conventor.data.di.scopes.ViewModelKey
 //import dark.composer.conventor.presentation.fragment.main.MainViewModel
 //import dark.composer.conventor.presentation.fragment.second.SecondViewModel
 //

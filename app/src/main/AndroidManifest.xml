@@ -3,8 +3,14 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="dark.composer.conventor">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+
+
     <application
-        android:name="dark.composer.conventor.app.App"
+        android:name="dark.composer.conventor.data.app.App"
         android:allowBackup="true"
         android:dataExtractionRules="@xml/data_extraction_rules"
         android:fullBackupContent="@xml/backup_rules"

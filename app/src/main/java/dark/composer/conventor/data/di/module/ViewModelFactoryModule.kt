@@ -1,4 +1,4 @@
-//package dark.composer.conventor.di.module
+//package dark.composer.conventor.data.di.module
 //
 //import androidx.lifecycle.ViewModelProvider
 //import dagger.Binds
