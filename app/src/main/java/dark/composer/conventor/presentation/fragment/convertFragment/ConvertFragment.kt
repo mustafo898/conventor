@@ -4,7 +4,9 @@ import android.Manifest
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.os.Build
+import android.os.Environment
 import android.util.Log
+import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
@@ -13,6 +15,8 @@ import dark.composer.conventor.databinding.FragmentConvertBinding
 import dark.composer.conventor.presentation.fragment.BaseFragment
 import dark.composer.conventor.presentation.fragment.adapters.ConvertTypeAdapter
 import dark.composer.conventor.presentation.fragment.splash.SplashViewModel
+import java.io.File
+
 
 class ConvertFragment : BaseFragment<FragmentConvertBinding>(FragmentConvertBinding::inflate) {
     private val convertTypeAdapter by lazy {
@@ -24,11 +28,15 @@ class ConvertFragment : BaseFragment<FragmentConvertBinding>(FragmentConvertBind
     @RequiresApi(Build.VERSION_CODES.P)
     override fun onViewCreate() {
         setUpUi()
-        checkPermission()
+//        checkPermission()
     }
 
     private fun setUpUi() {
         binding.convertTypeRcv.adapter = convertTypeAdapter
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+            convertTypeAdapter.setFile(getWord(Environment.getExternalStorageDirectory()))
+        }
+//        Toast.makeText(requireContext(), "${convertTypeAdapter.itemCount}", Toast.LENGTH_SHORT).show()
     }
 
     @Deprecated("Deprecated in Java")
@@ -41,10 +49,6 @@ class ConvertFragment : BaseFragment<FragmentConvertBinding>(FragmentConvertBind
         checkPermission()
     }
 
-    fun convertType(){
-        
-
-    }
     @RequiresApi(Build.VERSION_CODES.P)
     private fun checkPermission() {
         val permission = arrayOf(
@@ -70,9 +74,41 @@ class ConvertFragment : BaseFragment<FragmentConvertBinding>(FragmentConvertBind
 //                it.type = "file/*"
 //                startActivityForResult(it, REQUEST_CODE)
 //            }
+
+            val intent = Intent(Intent.ACTION_OPEN_DOCUMENT)
+            intent.addCategory(Intent.CATEGORY_OPENABLE)
+            intent.type = "*/*"
+            val mimetypes = arrayOf(
+                "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+                "application/msword"
+            )
+            intent.putExtra(Intent.EXTRA_MIME_TYPES, mimetypes)
+            startActivityForResult(intent,REQUEST_CODE)
         } else {
             ActivityCompat.requestPermissions(requireActivity(), permission, 1)
         }
+    }
+
+    private fun getWord(file:File): List<File> {
+        val list = mutableListOf<File>()
+        val files = file.listFiles()
+
+        files?.let {
+            for (singleFile:File in files){
+                if (singleFile.isDirectory && !singleFile.isHidden){
+                    list.addAll(getWord(singleFile))
+//                    Toast.makeText(requireContext(), "File", Toast.LENGTH_SHORT).show()
+                }else{
+                    if (singleFile.name.endsWith(".pdf")){
+                        list.add(singleFile)
+                        Toast.makeText(requireContext(), "${list.size}", Toast.LENGTH_SHORT).show()
+                    }
+                    Toast.makeText(requireContext(), singleFile.canonicalPath, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }
+
+        return list
     }
 //
 //    @Deprecated("Deprecated in Java")
