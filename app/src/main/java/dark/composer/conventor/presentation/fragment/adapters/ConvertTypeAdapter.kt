@@ -5,17 +5,18 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import dark.composer.conventor.R
 import dark.composer.conventor.databinding.ItemConvertTypeGridBinding
+import dark.composer.conventor.presentation.fragment.dto.ConvertTypeDTO
 import java.io.File
 
 class ConvertTypeAdapter : RecyclerView.Adapter<ConvertTypeAdapter.ConvertTypeViewHolder>() {
 
-    private var fileList = mutableListOf<File>()
-    private var clickListener: ((position: Int) -> Unit)? = null
-    fun setClickListener(f: (position: Int) -> Unit) {
+    private var fileList = mutableListOf<ConvertTypeDTO>()
+    private var clickListener: ((type:String) -> Unit)? = null
+    fun setClickListener(f: (type:String) -> Unit) {
         clickListener = f
     }
 
-    fun setFile(file:List<File>){
+    fun setFile(file:List<ConvertTypeDTO>){
         fileList.clear()
         fileList.addAll(file)
         notifyDataSetChanged()
@@ -23,11 +24,11 @@ class ConvertTypeAdapter : RecyclerView.Adapter<ConvertTypeAdapter.ConvertTypeVi
 
     inner class ConvertTypeViewHolder(private val binding: ItemConvertTypeGridBinding) :
         RecyclerView.ViewHolder(binding.root) {
-        fun bind(type: File) {
+        fun bind(type: ConvertTypeDTO) {
             binding.convertTypeImg.setImageResource(R.drawable.word_to_pdf)
-            binding.convertTypeTv.text = type.name
+            binding.convertTypeTv.text = type.text
             itemView.setOnClickListener {
-//                clickListener?.invoke(type.id)
+                clickListener?.invoke(type.convertType)
             }
         }
     }

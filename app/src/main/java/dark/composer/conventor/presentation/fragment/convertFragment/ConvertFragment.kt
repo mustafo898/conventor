@@ -14,7 +14,9 @@ import androidx.fragment.app.viewModels
 import dark.composer.conventor.databinding.FragmentConvertBinding
 import dark.composer.conventor.presentation.fragment.BaseFragment
 import dark.composer.conventor.presentation.fragment.adapters.ConvertTypeAdapter
+import dark.composer.conventor.presentation.fragment.dto.ConvertTypeDTO
 import dark.composer.conventor.presentation.fragment.splash.SplashViewModel
+import okhttp3.internal.addHeaderLenient
 import java.io.File
 
 
@@ -33,9 +35,10 @@ class ConvertFragment : BaseFragment<FragmentConvertBinding>(FragmentConvertBind
 
     private fun setUpUi() {
         binding.convertTypeRcv.adapter = convertTypeAdapter
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
-            convertTypeAdapter.setFile(getWord(Environment.getExternalStorageDirectory()))
-        }
+        convertTypeAdapter.setFile(setItem())
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.R) {
+//            convertTypeAdapter.setFile(getWord(Environment.getExternalStorageDirectory()))
+//        }
 //        Toast.makeText(requireContext(), "${convertTypeAdapter.itemCount}", Toast.LENGTH_SHORT).show()
     }
 
@@ -83,27 +86,35 @@ class ConvertFragment : BaseFragment<FragmentConvertBinding>(FragmentConvertBind
                 "application/msword"
             )
             intent.putExtra(Intent.EXTRA_MIME_TYPES, mimetypes)
-            startActivityForResult(intent,REQUEST_CODE)
+            startActivityForResult(intent, REQUEST_CODE)
         } else {
             ActivityCompat.requestPermissions(requireActivity(), permission, 1)
         }
     }
 
-    private fun getWord(file:File): List<File> {
+    private fun setItem(): List<ConvertTypeDTO> {
+        val list = mutableListOf<ConvertTypeDTO>()
+        list.add(ConvertTypeDTO(0, "word", "Word to Pdf"))
+        list.add(ConvertTypeDTO(1, "pdf", "Pdf to Word"))
+        return list
+    }
+
+    private fun getWord(file: File): List<File> {
         val list = mutableListOf<File>()
         val files = file.listFiles()
 
         files?.let {
-            for (singleFile:File in files){
-                if (singleFile.isDirectory && !singleFile.isHidden){
+            for (singleFile: File in files) {
+                if (singleFile.isDirectory && !singleFile.isHidden) {
                     list.addAll(getWord(singleFile))
 //                    Toast.makeText(requireContext(), "File", Toast.LENGTH_SHORT).show()
-                }else{
-                    if (singleFile.name.endsWith(".pdf")){
+                } else {
+                    if (singleFile.name.endsWith(".pdf")) {
                         list.add(singleFile)
                         Toast.makeText(requireContext(), "${list.size}", Toast.LENGTH_SHORT).show()
                     }
-                    Toast.makeText(requireContext(), singleFile.canonicalPath, Toast.LENGTH_SHORT).show()
+                    Toast.makeText(requireContext(), singleFile.canonicalPath, Toast.LENGTH_SHORT)
+                        .show()
                 }
             }
         }
