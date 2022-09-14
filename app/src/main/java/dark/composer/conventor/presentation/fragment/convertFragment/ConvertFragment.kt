@@ -52,6 +52,7 @@ class ConvertFragment : BaseFragment<FragmentConvertBinding>(FragmentConvertBind
         checkPermission()
     }
 
+
     @RequiresApi(Build.VERSION_CODES.P)
     private fun checkPermission() {
         val permission = arrayOf(
